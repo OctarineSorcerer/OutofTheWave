@@ -23,7 +23,7 @@ public class StartOptions : MonoBehaviour {
 	private PlayMusic playMusic;										//Reference to PlayMusic script
 	private float fastFadeIn = .01f;									//Very short fade time (10 milliseconds) to start playing music immediately without a click/glitch
 	private ShowPanels showPanels;										//Reference to ShowPanels script on UI GameObject, to show and hide panels
-    private AudioSource click = GetComponent<AudioSource>();
+    
     
 	
 	void Awake()
@@ -38,7 +38,7 @@ public class StartOptions : MonoBehaviour {
 
 	public void StartButtonClicked()
 	{
-        click.Play();
+        
         //If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic, using length of fadeColorAnimationClip as time. 
         //To change fade time, change length of animation "FadeToColor"
         if (changeMusicOnStart) 
