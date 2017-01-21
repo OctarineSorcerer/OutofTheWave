@@ -2,22 +2,17 @@
 
 public class Movement : MonoBehaviour
 {
-    //public string xAxis;
-    //public string yAxis;
     public float speed = 10.0f;
-    private Animator animator;
-    private CharacterController characterController;
     public int joystickNumber;
+    
+    Animator animator;
+    CharacterController characterController;
 
     // Use this for initialization
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        //if (string.isnullorempty(xaxis))
-        //    xaxis = "horizontal";
-        //if (string.isnullorempty(yaxis))
-        //    yaxis = "vertical";
     }
 
 
