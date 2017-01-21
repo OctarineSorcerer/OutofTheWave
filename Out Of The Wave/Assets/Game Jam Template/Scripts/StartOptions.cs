@@ -22,18 +22,7 @@ public class StartOptions : MonoBehaviour {
 
 	private PlayMusic playMusic;										//Reference to PlayMusic script
 	private float fastFadeIn = .01f;									//Very short fade time (10 milliseconds) to start playing music immediately without a click/glitch
-	private ShowPanels showPanels;										//Reference to ShowPanels script on UI GameObject, to show and hide panels
-<<<<<<< HEAD
-    
-=======
-    private AudioSource click;
-
-    void Start()
-    {
-        click = gameObject.GetComponent<AudioSource>();
-    }
->>>>>>> b603bd363d5b8647dcb6ddc620adaf0caadeac53
-    
+	private ShowPanels showPanels;										//Reference to ShowPanels script on UI GameObject, to show and hide panels 
 	
 	void Awake()
 	{
