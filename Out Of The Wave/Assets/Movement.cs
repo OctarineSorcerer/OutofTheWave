@@ -2,26 +2,30 @@
 
 public class Movement : MonoBehaviour
 {
-    public string xAxis;
-    public string yAxis;
+    //public string xAxis;
+    //public string yAxis;
     public float speed = 10.0f;
     private Animator animator;
+    private CharacterController characterController;
+    public int joystickNumber;
 
     // Use this for initialization
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
-        if (string.IsNullOrEmpty(xAxis))
-            xAxis = "Horizontal";
-        if (string.IsNullOrEmpty(yAxis))
-            yAxis = "Vertical";
+        characterController = GetComponent<CharacterController>();
+        //if (string.isnullorempty(xaxis))
+        //    xaxis = "horizontal";
+        //if (string.isnullorempty(yaxis))
+        //    yaxis = "vertical";
     }
 
 
     void Update()
     {
-        float xMove = Input.GetAxis(xAxis);
-        float yMove = Input.GetAxis(yAxis);
+        string joystickString = joystickNumber.ToString();
+        float xMove = Input.GetAxis("LeftJoystickX_P" + joystickString);
+        float yMove = Input.GetAxis("LeftJoystickY_P" + joystickString);
         var x = xMove * Time.deltaTime * speed;
         var z = yMove * Time.deltaTime * speed;
 
