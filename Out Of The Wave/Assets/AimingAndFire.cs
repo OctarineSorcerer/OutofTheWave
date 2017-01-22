@@ -8,6 +8,7 @@ public class AimingAndFire : MonoBehaviour {
     public int joystickNumber;
     public float cooldownSeconds = 0.2f;
     public float angle = 0;
+    public float timeToKill = 3.0f;
     public GameObject wave;
     public Transform parentTransform;
 
@@ -56,6 +57,7 @@ public class AimingAndFire : MonoBehaviour {
             GameObject waveInstance = Instantiate(wave, transform.position, transform.rotation, parentTransform);
             Physics.IgnoreCollision(fireCollider, waveInstance.GetComponent<Collider>());
             nextFireTime = Time.time + cooldownSeconds;
+            Destroy(waveInstance, timeToKill);
         }
     }
 }
