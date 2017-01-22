@@ -54,13 +54,12 @@ public class GameOver : MonoBehaviour
         if (player1.transform.position.y < yCheck )
         {
             
-            
             hideOnFinish.SetActive(false);
             stones.SetActive(false);
             gameOverFun1();
 
         }
-        if (player2.transform.position.y < yCheck)
+        else if (player2.transform.position.y < yCheck)
         {
             
             hideOnFinish.SetActive(false);

@@ -6,13 +6,11 @@ public class Movement : MonoBehaviour
     public int joystickNumber;
     
     Animator animator;
-    CharacterController characterController;
 
     // Use this for initialization
     void Start()
     {
-        animator = gameObject.GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
 
@@ -28,13 +26,29 @@ public class Movement : MonoBehaviour
         transform.Translate(x, 0, z); //Move the character
 
         //This may throw up warnings if an animator is not attached and set up correctly
-        if (xMove > 0)                                     //change character's sprite because of key pressed
+        if (xMove > 0)
+        {
+            //change character's sprite because of key pressed
             animator.SetTrigger("playerRight");
+            Debug.Log("Sliiiide to the right");
+        }
         else if (xMove < 0)
-            animator.SetTrigger("playerLeft");
+            changeTrigger("playerLeft");
         if (yMove > 0)
-            animator.SetTrigger("playerUp");
+            changeTrigger("playerUp");
         if (yMove < 0)
-            animator.SetTrigger("playerDown");
+            changeTrigger("playerDown");
+
+        
+    }
+
+    private string lastTrigger;
+    void changeTrigger(string trigger)
+    {
+        if(!string.IsNullOrEmpty(lastTrigger))
+            animator.ResetTrigger(lastTrigger);
+        animator.SetTrigger(trigger);
+        //if (lastTrigger != trigger && !string.IsNullOrEmpty(lastTrigger))
+        lastTrigger = trigger;
     }
 }
