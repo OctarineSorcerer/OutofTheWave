@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class AimingAndFire : MonoBehaviour {
 
     public int joystickNumber;
+    public float cooldownSeconds = 0.2f;
     public float angle = 0;
     public GameObject wave;
     public Transform parentTransform;
 
     private CharacterController characterController;
     private Animator animator;
+    private float nextFireTime = 0f;
 
     // Use this for initialization
     void Start () {
@@ -42,10 +45,11 @@ public class AimingAndFire : MonoBehaviour {
 	    }
 
 	    // Fire a wave (controller) - Radu
-        if (fire > 0)
+        if (fire > 0 && nextFireTime <= Time.time)
         {
             //Second param needs to be the position right in front of the arrow
             GameObject waveInstance = Instantiate(wave, transform.position, transform.rotation, parentTransform);
+            nextFireTime = Time.time + cooldownSeconds;
         }
     }
 }
