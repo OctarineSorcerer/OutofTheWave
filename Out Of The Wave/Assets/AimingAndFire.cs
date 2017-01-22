@@ -14,12 +14,17 @@ public class AimingAndFire : MonoBehaviour {
 
     private CharacterController characterController;
     private Animator animator;
+    private Collider fireCollider;
     private float nextFireTime = 0f;
 
     // Use this for initialization
     void Start () {
         animator = gameObject.GetComponent<Animator>(); //For if you need to set firing
         characterController = GetComponent<CharacterController>();
+        fireCollider = GetComponentInParent<Collider>();
+
+        if (parentTransform == null)
+            parentTransform = transform.root;
     }
 	
 	// Update is called once per frame
@@ -50,6 +55,7 @@ public class AimingAndFire : MonoBehaviour {
         {
             //Second param needs to be the position right in front of the arrow
             GameObject waveInstance = Instantiate(wave, transform.position, transform.rotation, parentTransform);
+            Physics.IgnoreCollision(fireCollider, waveInstance.GetComponent<Collider>());
             nextFireTime = Time.time + cooldownSeconds;
             Destroy(waveInstance, timeToKill);
         }

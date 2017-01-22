@@ -8,6 +8,9 @@ public class FallWhenOff : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         Debug.Log("YOU DEAD");
+        //ToFall.attachedRigidbody.freezeRotation = false;
+        ToFall.attachedRigidbody.constraints = RigidbodyConstraints.None;
+
         ToFall.attachedRigidbody.useGravity = true;
         ToFall.attachedRigidbody.isKinematic = false;
     }
