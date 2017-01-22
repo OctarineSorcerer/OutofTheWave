@@ -1,0 +1,5 @@
+In an epic battle between Poseidon and Aquaman you must defeat your opponent by knocking them off the arena uwith the power of waves!
+
+With a Controller: use the left joystick on the controller to move your player and the right to aim your attack press A unleash your attack.
+
+With keyboard: Use WASD to move for player 1, or arrows keys for player 2.   

@@ -7,7 +7,6 @@ public class Pause : MonoBehaviour {
 	private ShowPanels showPanels;						//Reference to the ShowPanels script used to hide and show UI panels
 	private bool isPaused;								//Boolean to check if the game is paused or not
 	private StartOptions startScript;					//Reference to the StartButton script
-    private bool stopKeyInput=false;
 	
 	//Awake is called before Start()
 	void Awake()
@@ -17,19 +16,6 @@ public class Pause : MonoBehaviour {
 		//Get a component reference to StartButton attached to this object, store in startScript variable
 		startScript = GetComponent<StartOptions> ();
 	}
-    
-    bool stopKeyInputFunction()
-    { if (stopKeyInput)
-        {
-            stopKeyInput = false;
-            return false;
-        }
-        else stopKeyInput = true;
-             return true;
-      
-
-
-    }
 
 	// Update is called once per frame
 	void Update () {
@@ -39,7 +25,6 @@ public class Pause : MonoBehaviour {
 		{
 			//Call the DoPause function to pause the game
 			DoPause();
-            stopKeyInputFunction();
 		} 
 		//If the button is pressed and the game is paused and not in main menu
 		else if (Input.GetButtonDown ("Cancel") && isPaused && !startScript.inMainMenu) 
